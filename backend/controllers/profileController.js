@@ -28,7 +28,7 @@ export const getCompanyProfile = async (req, res) => {
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
     }
-    const data = { email: company.email, prfile: company.profile };
+    const data = { email: company.email, profile: company.profile };
     res.status(200).json(data);
   } catch (error) {
     console.error(error);
