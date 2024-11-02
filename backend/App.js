@@ -2,10 +2,10 @@ import { configDotenv } from "dotenv";
 import express from "express";
 import cors from "cors";
 import DbConnect from "./DB/DbConnect.js";
+import authRoutes from "./Routes/Auth.route.js";
 
 configDotenv();
 
-import Authroute from "./Routes/Auth.route.js";
 
 const Server_app = () => {
 
@@ -27,7 +27,7 @@ const Server_app = () => {
     res.send(API_home_page).status(200);
   });
 
-  app.use("/api", Authroute);
+  app.use('/auth', authRoutes);
 
 }
 
