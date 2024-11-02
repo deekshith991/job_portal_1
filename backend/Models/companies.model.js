@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 
 const CompanySchema = mongoose.Schema({
 
-  email: { type: String },
+  email: { type: String, unique: true },
   password: { type: String },
 
   profile: {
     Name: { type: String },
     Branch: { type: String },
-    phone_No: { type: String },
+    phone_No: { type: String, unique: true },
     status: { type: String },
   },
   address: {
