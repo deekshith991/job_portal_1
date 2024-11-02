@@ -1,12 +1,15 @@
 
 
+// src/App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
-import LoginForm from "./components/sections/login_form";
-import RegisterForm from "./components/sections/register_form";
-import Sidebar from "./components/sections/sidebar.js"; // Import the Sidebar component
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import LoginForm from './components/sections/login_form';
+import RegisterForm from './components/sections/register_form';
+import Sidebar from './components/sections/sidebar'; // Import the Sidebar component
+import { useAuth } from './components/context/AuthContext.js'; // Import the authentication context
 
 function App() {
+  const { isAuthenticated } = useAuth(); // Get the authentication status
   const [isOpen, setIsOpen] = useState(false); // State to manage sidebar visibility
 
   const toggleSidebar = () => {
@@ -26,9 +29,10 @@ function App() {
         <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} /> {/* Render Sidebar */}
 
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
+          {/* Add protected routes based on authentication here */}
         </Routes>
       </div>
     </Router>
