@@ -5,12 +5,12 @@ const CompanySchema = mongoose.Schema({
 
   email: { type: String },
   password: { type: String },
-  status: { type: String },
 
   profile: {
     Name: { type: String },
     Branch: { type: String },
-    phone_No: { type: String }
+    phone_No: { type: String },
+    status: { type: String },
   },
   address: {
     building: { type: String },

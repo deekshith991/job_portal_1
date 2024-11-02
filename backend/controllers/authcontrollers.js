@@ -7,7 +7,7 @@ const SECRET_KEY = process.env.HASH_KEY || 'your_secret_key'; // Replace with a 
 
 // Company Registration Controller
 export const company_register = async (req, res) => {
-  const { email, password, profile } = req.body;
+  const { email, password } = req.body;
 
   try {
 
@@ -16,7 +16,7 @@ export const company_register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newCompany = new Companies({ email, password: hashedPassword, profile, status: "pending" });
+    const newCompany = new Companies({ email, password: hashedPassword, profile: { status: "pending" } });
     await newCompany.save();
 
     res.status(201).json({ message: "Company registered successfully" });
@@ -57,7 +57,7 @@ export const user_register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new Users({ email, password: hashedPassword });
+    const newUser = new Users({ email, password: hashedPassword, profile: { status: "pending" } });
     await newUser.save();
 
     const token = jwt.sign({ id: newUser._id, email: newUser.email }, SECRET_KEY, { expiresIn: "1h" });

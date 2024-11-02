@@ -9,7 +9,8 @@ const UserSchema = mongoose.Schema({
   Profile: {
     first_name: { type: String },
     last_name: { type: String },
-    DOB: { type: String }
+    DOB: { type: String },
+    status: { type: String }
   }
 
 });
