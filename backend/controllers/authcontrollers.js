@@ -58,6 +58,7 @@ export const user_register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    log(`[=] Registering ${email}`);
     const newUser = new Users({ email, password: hashedPassword, profile: { status: "pending" } });
     await newUser.save();
 
@@ -72,10 +73,11 @@ export const user_register = async (req, res) => {
 
 export const user_login = async (req, res) => {
   const { email, password } = req.body;
-  log(`[=] ${email} is logging in`);
 
   try {
     const user = await Users.findOne({ email });
+
+    log(`[=] ${email} is logging in`);
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
@@ -87,6 +89,7 @@ export const user_login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: "1h" });
 
+    log(`[=] ${email} successfully Logged In`);
     res.status(200).json({ message: "Logged in successfully", token, user_id: user._id });
   } catch (error) {
     console.error(error, `Error Authenticating ${email}`);
