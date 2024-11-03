@@ -52,7 +52,7 @@ function RegisterForm() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center text-gray-700">Register</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-700">Register to start Ur Journey</h2>
         {errorMessage && <p className="text-red-500">{errorMessage}</p>} {/* Display error message */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
