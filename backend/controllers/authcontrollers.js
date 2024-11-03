@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Companies from "../Models/companies.model.js";
 import Users from "../Models/Users.model.js";
+import { log } from '../middleware/logger.js';
 
 const SECRET_KEY = process.env.HASH_KEY || 'your_secret_key'; // Replace with a secure key in .env
 
@@ -71,11 +72,12 @@ export const user_register = async (req, res) => {
 
 export const user_login = async (req, res) => {
   const { email, password } = req.body;
+  log(`[=] ${email} is logging in`);
 
   try {
     const user = await Users.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "User not found" });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);

@@ -14,9 +14,10 @@ function LoginForm() {
     setError(''); // Reset any previous errors
 
     try {
-      const response = await axiosInstance.post('/login', { email, password }); // Use the Axios instance for API call
+      const response = await axiosInstance.post('/auth/user/login', { email, password }); // Use the Axios instance for API call
 
       if (response.status === 200) {
+        alert("log In");
         const { token, userId } = response.data; // Assume response contains token and userId
         login({ userId }, token); // Call the login function with user data and token
       }
