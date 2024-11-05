@@ -1,6 +1,5 @@
 
 
-
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
@@ -9,6 +8,8 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem('token') || null);
   const [userId, setUserId] = useState(() => localStorage.getItem('userId') || null);
+
+  const isAuthenticated = !!token; // Determine if user is authenticated
 
   const login = async (userData, token) => {
     setToken(token);
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, userId, login, logout }}>
+    <AuthContext.Provider value={{ token, userId, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
