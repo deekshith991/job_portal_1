@@ -1,5 +1,5 @@
 
-// src/components/Dashboard/UserSidebar.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,7 @@ const UserSidebar = ({ isOpen, toggleSidebar }) => {
       <div className={`fixed left-0 top-0 w-64 bg-white h-full shadow-lg transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <button onClick={toggleSidebar} className="p-4 text-gray-700 hover:text-blue-500">Close</button>
         <nav className="flex flex-col p-4 space-y-2">
+          {/* Common links in both Navbar and Sidebar */}
           <Link to="/dashboard" onClick={toggleSidebar}>
             <span className="block w-full py-2 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200 ease-in-out">Dashboard</span>
           </Link>
@@ -18,7 +19,18 @@ const UserSidebar = ({ isOpen, toggleSidebar }) => {
           <Link to="/settings" onClick={toggleSidebar}>
             <span className="block w-full py-2 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200 ease-in-out">Settings</span>
           </Link>
-          {/* Add more links as necessary */}
+
+          {/* Additional links specific to Sidebar */}
+          <Link to="/notifications" onClick={toggleSidebar}>
+            <span className="block w-full py-2 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200 ease-in-out">Notifications</span>
+          </Link>
+          <Link to="/support" onClick={toggleSidebar}>
+            <span className="block w-full py-2 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200 ease-in-out">Support</span>
+          </Link>
+          <Link to="/about" onClick={toggleSidebar}>
+            <span className="block w-full py-2 text-center text-white bg-blue-500 hover:bg-blue-600 rounded-md transition duration-200 ease-in-out">About Us</span>
+          </Link>
+          {/* Add more additional links here as necessary */}
         </nav>
       </div>
     </div>

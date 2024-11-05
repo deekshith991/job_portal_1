@@ -8,6 +8,7 @@ import RegisterForm from './components/sections/register_form';
 import Sidebar from './components/sections/sidebar'; // Import the Sidebar component
 import { useAuth } from './components/context/AuthContext.js'; // Import the authentication context
 import UserDashboard from './components/DashBoard/UserDashboard.js';
+import Header from './components/sections/Header.js';
 
 function App() {
   const { isAuthenticated } = useAuth(); // Get the authentication status
@@ -20,12 +21,13 @@ function App() {
   return (
     <Router>
       <div className="bg-gray-200 min-h-screen w-screen">
-        <button
-          onClick={toggleSidebar}
-          className="fixed top-4 left-4 p-2 bg-blue-500 text-white rounded-md z-50"
-        >
-          Menu
-        </button>
+        {/* <button */}
+        {/*   onClick={toggleSidebar} */}
+        {/*   className="fixed top-4 left-4 p-2 bg-blue-500 text-white rounded-md z-50" */}
+        {/* > */}
+        {/*   Menu */}
+        {/* </button> */}
+        <Header />
 
         <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} /> {/* Render Sidebar */}
 

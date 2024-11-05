@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../context/axiosInstance';
-import UserNavbar from './UserNavbar';
-import UserSidebar from './UserSidebar';
 
 const UserDashboard = () => {
   const { userId } = useAuth();
@@ -42,8 +40,6 @@ const UserDashboard = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      <UserNavbar toggleSidebar={toggleSidebar} />
-      <UserSidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
       <main className="flex-1 p-4 md:p-6">
         <h1 className="text-5xl font-semibold ">DASHBOARD</h1>
