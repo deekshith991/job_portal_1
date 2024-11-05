@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../context/axiosInstance.js"; // Import the Axios instance
 import { useAuth } from "../context/AuthContext.js";
 
@@ -8,6 +8,7 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ function LoginForm() {
         alert("log In");
         const { token, userId } = response.data; // Assume response contains token and userId
         login({ userId }, token); // Call the login function with user data and token
+        navigate("/dashboard");
       }
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed'); // Set error message from response or default

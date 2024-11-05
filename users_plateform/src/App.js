@@ -7,6 +7,7 @@ import LoginForm from './components/sections/login_form';
 import RegisterForm from './components/sections/register_form';
 import Sidebar from './components/sections/sidebar'; // Import the Sidebar component
 import { useAuth } from './components/context/AuthContext.js'; // Import the authentication context
+import UserDashboard from './components/DashBoard/UserDashboard.js';
 
 function App() {
   const { isAuthenticated } = useAuth(); // Get the authentication status
@@ -33,6 +34,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           {/* Add protected routes based on authentication here */}
+          <Route path="/dashboard" element={<UserDashboard />} />
         </Routes>
       </div>
     </Router>
