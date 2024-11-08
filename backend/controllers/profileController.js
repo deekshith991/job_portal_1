@@ -7,7 +7,7 @@ export const getUserProfile = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await Users.findById(id);
+    const user = await Users.findOne({ Aid: id });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -24,7 +24,7 @@ export const getCompanyProfile = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const company = await Companies.findById(id);
+    const company = await Companies.findOne({ Aid: id });
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
     }
