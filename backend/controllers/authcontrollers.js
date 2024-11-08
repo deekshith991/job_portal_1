@@ -28,7 +28,7 @@ export const register = async (req, res) => {
       const newUser = new Users({ Aid: newAccount._id, email });
       await newUser.save();
     } else if (account_Type === "company") {
-      const newCompany = new Companies({ Aid: newAccount._id, email });
+      const newCompany = new Companies({ Aid: newAccount._id, email, accountType: account_Type });
       await newCompany.save();
     } else {
       return res.status(400).json({ message: "Invalid account type" });
@@ -60,7 +60,7 @@ export const login = async (req, res) => {
 
     const token = jwt.sign({ id: account._id, email: account.email }, SECRET_KEY, { expiresIn: "1h" });
 
-    res.status(200).json({ message: "Logged in successfully", token, account_id: account._id });
+    res.status(200).json({ message: "Logged in successfully", token, account_id: account._id, accountType: account.account_Type });
   } catch (error) {
     console.error("Error @login", error);
     res.status(500).json({ message: "Server error" });
