@@ -44,7 +44,7 @@ export const register = async (req, res) => {
 
     res.status(201).json({
       message: `${accountType.charAt(0).toUpperCase() + accountType.slice(1)} registered successfully`,
-      account_id: newAccount._id,
+      accountId: newAccount._id,
       token,
       accountType
     });
@@ -74,7 +74,7 @@ export const login = async (req, res) => {
     res.status(200).json({
       message: "Logged in successfully",
       token,
-      account_id: account._id,
+      accountId: account._id,
       accountType: account.accountType,  // Corrected from 'account_Type'
     });
   } catch (error) {
