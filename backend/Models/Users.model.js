@@ -10,11 +10,14 @@ const UserSchema = mongoose.Schema({
     DOB: { type: String },
     phone_No: { type: String },
   },
-  education: {
-    ssc: { school: String, year: Number, GPA: Number },
-    inter: { college: String, year: Number, GPA: Number },
-    underGraduation: { college: String, Branch: String, year: Number, GPA: Number }
-  }
+  education: [{
+    instituteName:{type:String},
+    from:{type:String},
+    to:{type:String},
+    major:{type:String},
+    CGPA:{type:Number},
+    Remarks:{type:String}
+  }]
 });
 
 export default mongoose.model("Users", UserSchema);

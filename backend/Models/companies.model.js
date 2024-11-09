@@ -16,7 +16,8 @@ const CompanySchema = mongoose.Schema({
     location: { type: String },
     country: { type: String },
     pincode: { type: Number }
-  }
+  },
+  jobsIssued:{type:Number,default:0},
 });
 
 export default mongoose.model("Companies", CompanySchema);
