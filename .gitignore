@@ -1,4 +1,5 @@
 
 .env
 node_modules
-
+job_portal_backend
+users_plateform
