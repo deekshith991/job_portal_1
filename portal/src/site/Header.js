@@ -1,13 +1,13 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Sidebar from "./sidebar"; // >>>>>> above change: Import the combined Sidebar <<<<<
+import Sidebar from "./Sidebar";
 
-const Header = () => { // >>>>>> above change: Accept isAuthenticated prop <<<<<
+const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+    console.log("Sidebar toggled:", !sidebarOpen);
   };
 
   return (
@@ -32,12 +32,9 @@ const Header = () => { // >>>>>> above change: Accept isAuthenticated prop <<<<<
         <Link to="/settings" className="hover:bg-blue-700 px-3 py-2 rounded-md">Settings</Link>
       </nav>
 
-      {/* >>>>>> above change: Combined Sidebar for Mobile View <<<<< */}
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-      {/* >>>>>> above change: Pass authentication status to Sidebar <<<<< */}
     </header>
   );
 };
 
 export default Header;
-
