@@ -32,7 +32,7 @@ const RegisterForm = () => {
 
       // Log the user in automatically after registration
       login({ accountType: registeredAccountType, accountId }, token);
-      navigate(registeredAccountType === 'company' ? '/company-dashboard' : '/dashboard');
+      navigate(registeredAccountType === 'company' ? '/company-profileUpdate' : '/profileUpdate');
     } catch (error) {
       console.error("Registration failed:", error);
       setError('Registration failed. Please try again.'); // Set error message

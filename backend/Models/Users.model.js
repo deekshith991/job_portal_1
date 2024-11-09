@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema({
     from:{type:String},
     to:{type:String},
     major:{type:String},
-    CGPA:{type:Number},
+    CGPA: { type: Number, min: 0, max: 10, required: true }, 
     Remarks:{type:String}
   }]
 });

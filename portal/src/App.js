@@ -7,6 +7,7 @@ import LoginForm from './site/login_form';
 import RegisterForm from './site/Register_form';
 import UserDashboard from './User/DashBoard';
 import CompanyDashboard from './Company/DashBoard';
+import UserProfileUpdatePage from './User/profileUpdatePage';
 
 function App() {
   const { isAuthenticated, accountType } = useAuth();
@@ -41,6 +42,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/profileUpdate" element={<ProtectedRoute><UserProfileUpdatePage/></ProtectedRoute>}></Route>
+
+
           <Route
             path="/company-dashboard"
             element={
